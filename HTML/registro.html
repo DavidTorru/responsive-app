@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Discordia</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main>
+        <h1>Discordia</h1>
+
+        <div class="register">
+            <div class="register-form">
+                <h2 class="t1">Crear una Cuenta</h2>
+            <form id="register-form" action="">
+                <label class="t2" for="email">Correo Electronico</label><br>
+                <input type="email" id="register" name="email" required><br>
+                <label class="t2" for="username">Nombre de Usuario</label><br>
+                <input type="text" id="username" name="username" required><br>
+                <label class="t2" for="first-name">Nombre</label><br>
+                <input type="text" id="first-name" name="first-name" required><br>
+                <label class="t2" for="last-name">Apellido</label><br>
+                <input type="text" id="last-name" name="last-name" required><br>
+                <label class="t2" for="password">Contraseña</label><br>    
+                <input type="password" id="password" name="password" required><br>
+                <label class="t2" for="birthdate">Fecha de Nacimiento</label><br>
+                <div class="birthdate">
+                    <input type="number" id="day" name="birthdate-day" min="1" max="31" placeholder="Día" required>
+                    <input type="number" id="month" name="birthdate-month" min="1" max="12" placeholder="Mes" required>
+                    <input type="numer" id="year" name="birthdate-year" min="1900" max="2099" placeholder="Año" required>
+                </div>
+                <button type="submit">Crear Cuenta</button>
+            </form>
+            <p class="p1">
+                <a href="/HTML/UI_principal.html">¿Ya tienes una cuenta?</a>
+            </p>
+        </div>
+    </main>
+<script src="../js/script.js"></script>
+</body>
+</html>
+
