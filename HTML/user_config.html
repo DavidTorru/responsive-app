@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discordia</title>
+    <link rel="icon" href="/img/Logo_principal.png" style="width: 16px; height: 16px;">
+    <link rel="stylesheet" href="/CSS/general.css">
+    <link rel="stylesheet" href="/CSS/user_config.css">
+</head>
+<body>
+    <main>
+        <div>
+            <div class="title-ini">
+                <h2 class="user">Mi Cuenta</h2>
+                <div id="back" class="closeButton" aria-label="Cerrar" role="button" tabindex="0">
+                    <svg aria-hidden="true" role="img" width="30" height="30" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="box">
+                <div class="my_user">
+                    <div class="userimg">
+                        <div class="imguser">
+                            <img id="imguser" src="" alt="Imagen de perfil">
+                        </div>
+                        <div class="imgedit">
+                            <button class="edit-button" id="changeImg">Cambiar Imagen de perfil</button>
+                        </div>
+                    </div>
+                    <div class="user-data">
+                        <div class="data">
+                            <p class="username">User</p>
+                            <p class="userid">id_user</p>    
+                        </div>
+                    </div>
+                </div>
+                <div class="useredit">
+                    <div class="content2">
+                        <div class="username">
+                            <div class="h3">
+                                <h3>Mostrar nombre de Usuario</h3>
+                            </div>
+                            <div>
+                                <a href="">User</a>
+                            </div>
+                        </div>
+                        <div class="button_edit">
+                            <button class="edit" id="editUsName">Editar</button>
+                        </div>
+                    </div>
+                    <div class="content2">
+                        <div class="userfirstname"> 
+                            <div class="h3">
+                                <h3>Nombre del Usuario</h3>
+                            </div>
+                            <div>
+                                <a href="">First Name</a>
+                            </div>
+                        </div>
+                        <div class="button_edit">
+                            <button class="edit" id="editFstName">Editar</button>
+                        </div>
+                    </div>
+                    <div class="content2">
+                        <div class="userlastname"> 
+                            <div class="h3">
+                                <h3>Apellido del Usuario</h3>
+                            </div>
+                            <div>
+                                <a href="">Last Name</a>
+                            </div>
+                        </div>
+                        <div class="button_edit">
+                            <button class="edit" id="editLastName">Editar</button>
+                        </div>
+                    </div>
+                    <div class="content2">
+                        <div class="usermail"> 
+                            <div class="h3">
+                                <h3>Correo Electronico</h3>
+                            </div>
+                            <div>
+                                <a href="">juan@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="username_edit">
+                            <button class="edit" id="editMail">Editar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="userpassword">
+                <div class="changepass">
+                    <p class="p1">Contraseña</p>
+                    <button class="change_password" id="change_password">Cambiar Contraseña</button>
+                </div>
+                <div class="formPss" id="formPss">
+                    <div class="newPassword">
+                        <div class="h3">
+                            <label for="oldPass">
+                                <h3>Ingresa la contraseña anterior</h3>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="password" id="oldPass">
+                        </div>
+                        <div class="h3">
+                            <label for="newPass">
+                                <h3>Ingresa la nueva contraseña</h3>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="password" id="newPass">
+                        </div>
+                        <div class="b6">
+                            <button id="okbtn6" class="okbtn">Aceptar</button>
+                            <button id="cancelbtn6" class="cancelbtn">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="exit-session">
+                <div class="closesession">
+                    <button id="logoutButton">
+                        <p class="p2">Cerrar sesion</p>
+                        <img src="/image/Salir.png" alt="Exit">    
+                    </button>
+                </div>
+            </div>           
+            <div class="form_userimg" id="form_userimg">
+                <div class="w1">
+                    <div class="h3">
+                        <label for="form1">
+                            <h3>Ingresa el link de tu nueva imagen</h3>
+                        </label>
+                    </div>
+                    <div class="input1">
+                        <input type="text" placeholder="Pega el link aqui..." id="form1">
+                    </div>
+                    <div class="b1">
+                        <button id="okbtn1" class="okbtn">Aceptar</button>
+                        <button id="cancelbtn1" class="cancelbtn">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form_edit">
+                <div class="w2" id="w2">
+                    <div class="h3">
+                        <label for="form2">
+                            <h3>Ingresa tu nuevo nombre de usuario</h3>
+                        </label>
+                    </div>
+                    <div class="input1">
+                        <input type="text" placeholder="..." id="form2">
+                    </div>
+                    <div class="b2">
+                        <button id="okbtn2" class="okbtn">Aceptar</button>
+                        <button id="cancelbtn2" class="cancelbtn">Cancelar</button>
+                    </div>
+                </div>
+                <div class="w3" id="w3">
+                    <div class="h3">
+                        <label for="form3">
+                            <h3>Ingresa tu Nombre</h3>
+                        </label>
+                    </div>
+                    <div class="input1">
+                        <input type="text" placeholder="..." id="form3">
+                    </div>
+                    <div class="b3">
+                        <button id="okbtn3" class="okbtn">Aceptar</button>
+                        <button id="cancelbtn3" class="cancelbtn">Cancelar</button>
+                    </div>
+                </div>
+                <div class="w4" id="w4">
+                    <div class="h3">
+                        <label for="form4">
+                            <h3>Ingresa tu Apellido</h3>
+                        </label>
+                    </div>
+                    <div class="input1">
+                        <input type="text" placeholder="..." id="form4">
+                    </div>
+                    <div class="b4">
+                        <button id="okbtn4" class="okbtn">Aceptar</button>
+                        <button id="cancelbtn4" class="cancelbtn">Cancelar</button>
+                    </div>
+                </div>
+                <div class="w5" id="w5">
+                    <div class="h3">
+                        <label for="form5">
+                            <h3>Ingresa tu nuevo correo</h3>
+                        </label>
+                    </div>
+                    <div class="input1">
+                        <input type="email" placeholder="..." id="form5">
+                    </div>
+                    <div class="b5">
+                        <button id="okbtn5" class="okbtn">Aceptar</button>
+                        <button id="cancelbtn5" class="cancelbtn">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<script src="/js/user_config.js"></script>
+</body>
+</html>
