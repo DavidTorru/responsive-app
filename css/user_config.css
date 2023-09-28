@@ -87,7 +87,7 @@ body {
 
 .username {
     color: #f2f3f5;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 5px;
 }
@@ -124,7 +124,7 @@ body {
     font-weight: bold;
 }
 
-a {
+.pdata {
     font-size: 16px;
     color: #f2f3f5;
     font-weight: inherit;
