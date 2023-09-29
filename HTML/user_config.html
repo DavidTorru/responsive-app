@@ -11,6 +11,14 @@
 <body>
     <main>
         <div>
+            <div id="success-notification" class="notification success">
+                <span class="close-button" onclick="closesuccess()">&times;</span>
+                <p>Datos actualizados con exito</p>
+            </div>
+            <div id="failure-notification" class="notification failure">
+                <span class="close-button" onclick="closefailure()">&times;</span>
+                <p id="failure-text">No se pudo actualizar los datos</p>
+            </div>
             <div class="title-ini">
                 <h2 class="user">Mi Cuenta</h2>
                 <div id="back" class="closeButton" aria-label="Cerrar" role="button" tabindex="0">

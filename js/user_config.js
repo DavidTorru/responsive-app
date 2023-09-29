@@ -20,7 +20,7 @@ data = {
     "name":form3.value,
     "lastname":form4.value,
   }
-  console.log(data)
+
   fetch('http://127.0.0.1:5000/update_user', {
                 method: 'PUT',
                 body: JSON.stringify(data),
@@ -31,7 +31,15 @@ data = {
             })
             .then(response => response.json())
                 .then(data => {
-                    console.log(data)})
+                    w2.style.display = "none";
+                    w3.style.display = "none";
+                    w5.style.display = "none";
+                    w4.style.display = "none";
+                    form_userimg.style.display = "none";
+                    formPss.style.display = "none";
+                    showsuccess() 
+                    testeo()
+                   })
 }
 
 // Volver a la ventana Principal
@@ -44,11 +52,6 @@ back.addEventListener("click", function() {
 
 // Mostrar datos del usuario
 function testeo(){
-console.log("Testeo?")
-console.log()
-const cookies = document.cookie
-console.log(cookies)
-
 fetch('http://127.0.0.1:5000/user', {
     method: 'GET',
     headers:{
@@ -59,10 +62,10 @@ fetch('http://127.0.0.1:5000/user', {
 
 .then(response => response.json())
   .then(data => {
-      console.log(data)
+   
       if(!data.error){
 
-          console.log('Respuesta del servidor:', data);
+          
           const refavataruser=document.getElementById("imguser")
           const refusername=document.querySelectorAll("#user-name, #user-name-edit")
           const refuserid=document.getElementById("user-id")
@@ -108,12 +111,17 @@ changeImg.addEventListener("click", function() {
 
 // Agregar el evento para el boton aceptar
 okbtn1.addEventListener("click", function() {
-  update()            
+  if (form1.value === "") {
+    alert("Debe ingresar el link de una imagen");
+  } else {
+    update();
+  }
 });
 
   // Evento para el botón cancelar
 cancelbtn1.addEventListener("click", function() {
   form_userimg.style.display = "none"; // Oculta el formulario
+  form1.value = "";
 });
 
 // Editar datos de la cuenta
@@ -144,12 +152,18 @@ editUsName.addEventListener("click", function() {
 
   // Agregar el evento para el boton aceptar
 okbtn2.addEventListener("click", function() { 
-  update()            
+  if (form2.value === "") {
+    alert("Debe ingresar su nuevo nombre de usuario");
+  } else {
+    update();
+  }
 });
 
   // Evento para el botón cancelar
 cancelbtn2.addEventListener("click", function() {
   w2.style.display = "none"; // Oculta el formulario
+  form2.value = "";
+
 });
 
   // Evento para cambiar el Primer Nombre
@@ -159,12 +173,18 @@ editFstName.addEventListener("click", function() {
 
   // Agregar el evento para el boton aceptar
 okbtn3.addEventListener("click", function() {
-  update()            
+  if (form3.value === "") {
+    alert("Debe ingresar su Nombre");
+  } else {
+    update();
+  }
 });
 
   // Evento para el botón cancelar
 cancelbtn3.addEventListener("click", function() {
   w3.style.display = "none"; // Oculta el formulario
+  form3.value = "";
+
 });
 
   // Evento para cambiar el Apellido
@@ -174,12 +194,18 @@ editLastName.addEventListener("click", function() {
 
   // Agregar el evento para el boton aceptar
 okbtn4.addEventListener("click", function() {
-  update()            
+  if (form4.value === "") {
+    alert("Debe ingresar su Apellido");
+  } else {
+    update();
+  }
 });
 
   // Evento para el botón cancelar
 cancelbtn4.addEventListener("click", function() {
   w4.style.display = "none"; // Oculta el formulario
+  form4.value = "";
+
 });
 
   // Evento para cambiar el Correo
@@ -189,12 +215,18 @@ editMail.addEventListener("click", function() {
 
   // Agregar el evento para el boton aceptar
 okbtn5.addEventListener("click", function() {
-  update()            
+  if (form5.value === "") {
+    alert("Debe ingresar su nueva direccion de correo");
+  } else {
+    update();
+  }
 });
 
   // Evento para el botón cancelar
 cancelbtn5.addEventListener("click", function() {
   w5.style.display = "none"; // Oculta el formulario
+  form5.value = "";
+
 });
 
 // Cambiar la Contraseña
@@ -210,7 +242,31 @@ change_password.addEventListener("click", function() {
 
   // Agregar el evento para el boton aceptar
 okbtn6.addEventListener("click", function() {
-
+  var old_password=document.getElementById("oldPass")
+  var new_password=document.getElementById("newPass")
+  data={
+    'login_password': old_password.value,
+    'new_password': new_password.value
+  }
+  fetch('http://127.0.0.1:5000/update_password', {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+                , credentials: 'include'
+            })
+            .then(response => response.json())
+                .then(data => {
+               
+                    if(data.error=="No se pudo cambiar la contraseña")showfailure()
+                    else{
+                      showsuccess()
+                      formPss.style.display = "none";
+                    }
+                    
+                  
+                  })
 });
 
   // Evento para el botón cancelar
@@ -232,7 +288,27 @@ logoutButton.addEventListener("click", function() {
 })
 .then(response => response.json())
 .then(data => {
-    console.log(data)})
+    })
     window.alert("Sesion cerrada con exito!")
     window.location.href = '/HTML/index.html'
 });
+
+function showsuccess() {
+  const notification = document.getElementById("success-notification");
+  notification.style.display = "block";
+}
+
+function closesuccess() {
+  const notification = document.getElementById("success-notification");
+  notification.style.display = "none";
+}
+
+function showfailure() {
+  const notification = document.getElementById("failure-notification");
+  notification.style.display = "block";
+}
+
+function closefailure() {
+  const notification = document.getElementById("failure-notification");
+  notification.style.display = "none";
+}

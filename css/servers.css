@@ -3,22 +3,76 @@ html {
 }
 
 body {
-    background: rgb(40, 40, 40);
+    background: #36393F;
     display: flex;
     height: 100%;
+}
+
+.container_search {
+    background: #36393F;
+    flex: 1;
+    border: none;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    overflow-y: auto;
+    max-height: 88vh;
+    max-width: 1000px;
+    width: 100vh;
+    min-width: 60vh;
+}
+
+.search-server-container{
+    background-color: #202227;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start
+}
+
+.server_searched{
+    margin: 10px;
+    justify-content: center;
+    text-align: center;
+    color: #c1c4ca;
+    height: 100px;
+}
+
+.server_searched img {
+    background: #36393f;
+    border-radius: 15px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 10px;
+    margin-bottom: 2px;
+}
+
+.server_searched p {
+    width: 5vw;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .servers, .middle, .messages {
     height: 100%;
     display: flex;
-    
 }
+
 .server-container{
     overflow: hidden;
     overflow-y: auto;
-    
+    box-sizing: border-box;
     max-height: 100vh;
 }
+
 .server-container::-webkit-scrollbar {
     width: 0.5em; 
     height: 0.5em;
@@ -116,8 +170,24 @@ body {
     z-index: 10;
 }
 
+/* .create-server:hover::before {
+    content: "Este es un mensaje de hover que puede desbordar el contenedor si es demasiado largo.";
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1; 
+    white-space: nowrap; 
+    overflow: visible; 
+} */
+
 .logo-app:hover .home, .create-server:hover .home {
     opacity: 1;
+    overflow: visible;
+    overflow-y: visible;
 }
 
 .line {
@@ -152,6 +222,31 @@ body {
     cursor: pointer;
 }
 
+.search-servers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+    color: white;
+    padding: 13px;
+    cursor: pointer;
+}
+
+.search-servers input {
+    width: 60vw;
+    border-radius: 5px;
+    background: #202225;
+    border: none;
+    padding: 5px;
+    outline: transparent solid 5px;;
+    caret-color: rgb(187, 185, 190);
+    color: rgb(220, 220, 220);
+    transition: width 0.15s;
+    margin-right: 10px;
+    height: 5vh;
+    font-size: 25px;
+}
+
 .search-friend input {
     width: 180px;
     border-radius: 5px;
@@ -167,6 +262,12 @@ body {
 
 .search-friend:hover {
     background: #3b3e44
+}
+
+.search-server-container{
+    width: 60vw;
+    height: 100vh;
+    border: 1px solid black;
 }
 
 .channels, .channel {
@@ -185,7 +286,6 @@ body {
 .channels{
     overflow: hidden;
     overflow-y: auto;
-    
     max-height: 80vh;
 }
 .channels::-webkit-scrollbar {
@@ -207,6 +307,7 @@ body {
     align-items: center;
     color: #96989D;    
 }
+
 .name .p1 {
     font-size: 12px;
 }
@@ -254,8 +355,12 @@ body {
 }
 
 .channel-p {
+    width: 150px;
     font-size: 14px; 
     margin-left: 5px;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .contents2:hover {
@@ -306,9 +411,13 @@ body {
 }
 
 .username {
+    width: 90px;
     flex-direction: column;
     font-weight: bold;
     color: #c1c4ca;
+    white-space: nowrap;
+    overflow: hidden; 
+    text-overflow: ellipsis;
 }
 
 .user-id {
@@ -350,4 +459,75 @@ body {
     }
 
     /* Agrega más estilos específicos para móviles aquí */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-channel {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-add-user{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color:  #202227;
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Estilos para el botón de abrir el modal */
+#openModalBtn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#openModalBtn:hover {
+    background-color: #0056b3;
 }

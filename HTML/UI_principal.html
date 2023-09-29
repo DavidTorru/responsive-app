@@ -11,18 +11,43 @@
     <link rel="stylesheet" href="../css/messages.css">
 </head>
     <body>
+        <div class="modal-add-user" id="modal-add-user">
+            <div class="modal-content">
+                <p>¿Quieres unirte al servidor: <span id="add_user_server_name"></span>?</p>
+                <button id="yes_add_user">Sí</button>
+                <button id="no_add_user" >No</button>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-server">
+                        <div class="modal-content">
+                            <span class="close" id="close-modal">&times;</span>
+                            <h2>Crear Servidor</h2>
+                            <label  for="server-Name">Nombre del Servidor:</label>
+                            <input type="text" id="server-name">
+                            <label  for="server-Image">Link de la Imagen:</label>
+                            <input type="text" id="server-link">
+                            <button id="button-create-server">Crear Servidor</button>
+                        </div>
+        </div>
+        <div class="modal-channel" id="modal-channel">
+            <div class="modal-content">
+                <span class="close" id="close-modal-channel">&times;</span>
+                <h2>Crear Canal</h2>
+                <label  for="channel-Name">Nombre del Canal:</label>
+                <input type="text" id="channel-name">
+                
+                <button id="button-create-channel">Crear Canal</button>
+            </div>
+</div>
         <div class="servers">
             <div class="server-container" >
                 <div class="server" >
+                    <div class="logo-app">
+                        <img src="../image/Logo.png" width="50" height="50" alt="Logo Discordia" id="search-servers"> 
+                        
+                    </div>
                     <div id="server">
-                        <div class="logo-app">
-                            <img src="../image/Logo.png" width="50" height="50" alt="Logo Discordia"> 
-                            <div class="resaltador"></div>
-                            <div class="home">Inicio</div>
-                        </div>
-                        <div class="logo-app">
-                            <img src="../image/Logo.png" width="50" height="50" alt="Logo Discordia"> 
-                        </div>
                         
                     </div>
                     
@@ -44,12 +69,12 @@
             <div class="middle">
             <!--Para cuando estoy dentro del Inicio-->
                 <div class="search-friend">
-                    <input placeholder="Busca o inicia una conversacion" type="text">
+                    <div id="server-name-display"></div>
                 </div>
                 <!--Agregar que me muestre los amigos con nombre y foto-->
 
             <!--Para cuando estoy dentro de un server-->
-                <div class="channels">
+                <div class="channels" style="display: none" id="channels-container">
                     <div class="channel">
                         <div class="name">
                             <p class="p1">Canales de Texto</p>
@@ -75,33 +100,36 @@
                             </div>
                         </div>
                     </div>
+                    
+                </div>
+
+                <div class="channels" id="search-container">
                     <div class="channel">
                         <div class="name">
-                            <p class="p1">Canale de Voz</p>
+                            <p class="p1">Servidores</p>
                             <div class="wrraper">
-                                <p class="p2">&plus;</p>
+                                <p class="p2" id="create-channel">&plus;</p>
                                 <div class="create">Crear Canal</div>
                             </div>
                         </div>
-                        <div class="contents2">
-                            <div>
-                                <p class="channel-p">General</p>
-                            </div>
+                        <div id="all-server-container">                       
+                            
                         </div>
                     </div>
+                    
                 </div>
                 <!--LLamar a los datos del Usuario-->
                 <div class="user-data">
                     <div class="data">
                         <div class="user">
                             <div class="user-img">
-                                <img src="" alt="(nombre del user)">
+                                <img src="" alt="(nombre del user)" id="user-avatar">
                             </div>
-                            <p class="username">user</p>
-                            <p class="user-id">#id_number</p>
+                            <p class="username" id="user-name">user</p>
+                            <p class="user-id" id="user-id">#id_number</p>
                         </div>
                         <!--agregar link al perfil-->
-                        <a href="" class="config-user">
+                        <a href="user_config.html" class="config-user">
                             <img src="../image/rueda-config.png" alt="Configuracion">
                         </a>
                     </div>
@@ -109,145 +137,38 @@
             </div>
         </div>
         <!---->
-        <div class="messages">
-            <div class="search-message">
-                <div class="name-ch">
-                    <p class="contents2">(Nombre del canal)</p>
-                </div>
-                <div>
-                    <input placeholder="Buscar" class="search-input"> 
-                </div>
-            </div>
-            <div class="messages">
+        <div class="messages" style="display: none;" id="container-messages">
+            <div>
                 <div class="welcome">
                     <h1 style="color: white;">Te damos la bienvenida a...</h1>
-                    <p>Aqui empieza el canal...</p>
+                    <p id="prueba">Aqui empieza el canal...</p>
                 </div>
-                <div class="between-line">
-                    <div class="line"></div>
-                    <p class="date">(poner la fecha de creacion del canal)</p>
-                </div>
-                <div class="message">
-                    <div>
-                        <div>
-                            <p style="color: white;">User</p>
-                            <div>Fechas de mensaje</div>
-                        </div>
-                        <p style="color: white;">mensaje</p>
+                <div class="chat-messages"  id="chat-container">
+                    <div class="message">
+                            <div style="color: white; visibility: hidden;">_______________________________________________________________________________________________________________________</div>
+                        </div>   
                     </div>
+                    
                 </div>
             </div>
             <div class="message-input">
                 <div class="chat">
-                    <input placeholder="Escribir mensaje a #grupo/contacto" type="text">
-                    <!--Agregar boton enviar-->
+                    <input placeholder="Escribir mensaje a #grupo/contacto" type="text" id="text">
+                    <div style="position: absolute; top: 10px; right: 10px" id="send">►</div>
                 </div>
             </div>
         </div>
-        <script >
-            document.addEventListener("DOMContentLoaded", function(){
-                    
-            })
 
-            fetch("http://127.0.0.1:5000/get_my_servers").then(response => response.json())
-                .then(data => {
-                        console.log(data)
-                        for (i=0;i<=data.length;i++){
-                            const referenciadiv=document.getElementById("server")
-                
-                            const logo_app=document.createElement("div")
-                            logo_app.className='logo-app'
-                            const logo=document.createElement("img")
-                            logo.src='../image/Logo.png'
-                            logo.width=50
-                            logo.height=50
-                            logo.alt='Logo Discordia'
-        
-                            const resaltador=document.createElement('div')
-                            resaltador.className='resaltador'
-
-                            logo_app.appendChild(logo)
-                            logo_app.appendChild(resaltador)
-
-                            referenciadiv.appendChild(logo_app)
-                        }
-                })
-                .catch(error => console.log(error))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            const refenciacrearserver= document.getElementById("create-server")
-            refenciacrearserver.addEventListener("click", function() {
-                const referenciadiv=document.getElementById("server")
-                
-                const logo_app=document.createElement("div")
-                logo_app.className='logo-app'
-                const logo=document.createElement("img")
-                logo.src='../image/Logo.png'
-                logo.width=50
-                logo.height=50
-                logo.alt='Logo Discordia'
-                
-                
-    
-                const resaltador=document.createElement('div')
-                resaltador.className='resaltador'
-
-                logo_app.appendChild(logo)
-                logo_app.appendChild(resaltador)
-
-                referenciadiv.appendChild(logo_app)
-            });
-
-            const referenciacrearcanal=document.getElementById('create-channel')
-            referenciacrearcanal.addEventListener('click', function(){
-                const referenciadivcanal=document.getElementById('channel_container')
-
-                const content=document.createElement('div')
-                content.className='content'
-                const content2=document.createElement('div')
-                content2.className='contents2'
-                const adiv=document.createElement('div')
-                const channel_p=document.createElement('p')
-                channel_p.className='channel-p'
-                channel_p.textContent="General"
-
-                adiv.appendChild(channel_p)
-
-                content2.appendChild(adiv)
-
-                content.appendChild(content2)
-
-                referenciadivcanal.appendChild(content)
-
-            })
-
-
-            /* <div class="content">
-                            <div class="contents2">
-                                <div>
-                                    <p class="channel-p">General</p>
-                                </div>
-                            </div>
-                        </div> */
-            /* <div class="logo-app">
-                        <img src="../image/Logo.png" width="50" height="50" alt="Logo Discordia"> 
-                        <div class="resaltador"></div>
-                        <div class="home">Inicio</div>
-                    </div>
-                    <div class="line"></div> */
+        <div class="container_search" id="container-search">
+            <div class="search-servers">
+                <input placeholder="Buscar un servidor" type="text" id="filter">
+            </div>
+            <div class="search-server-container" id="search-server-container">
+               
+            </div>
+        </div>
+        <script src="/js/UI_principal.js">
+            
         </script>
     </body>
 </html>

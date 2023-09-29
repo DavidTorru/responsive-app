@@ -320,3 +320,38 @@ button img {
     caret-color: #fff;
     outline: none;
 }
+
+
+.notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    min-width: 250px;
+    padding: 15px;
+    
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    }
+    
+    
+.success {
+    background-color: #4CAF50;
+    border-color: #45a049;
+    }
+
+.failure{
+    background-color: #bd1d1d;
+    border-color: #ac0701;
+}
+    
+    
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    }

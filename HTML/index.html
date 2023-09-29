@@ -5,17 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Discordia</title>
+    <link rel="icon" href="/image/Logo_principal.png" style="width: 16px; height: 16px;">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <main>
-        <h1>Discordia</h1>
-
+        <div class="title1">
+            <div>
+                <a href="/vista1.html">
+                    <img class="imgTitle1" src="/image/Logo_principal.png" alt="Discordia">
+                </a>
+            </div>
+            <div>
+                <h1 class="h1">Discordia</h1>
+            </div>
+        </div>
+        <div id="success-notification" class="notification success">
+            <span class="close-button" onclick="closesuccess()">&times;</span>
+            <p>¡Inicio de sesion con exito!</p>
+        </div>
+        <div id="failure-notification" class="notification failure">
+            <span class="close-button" onclick="closefailure()">&times;</span>
+            <p id="failure-text">No se pudo iniciar sesion, compruebe su usuario y/o contraseña</p>
+        </div>
         <div class="login">
             <div class="login-form">
                 <h2 class="t1">Iniciar Sesión</h2>
             <form id="login-form" action="">
-                <label class="t2" for="email">Usuario:</label><br>
+                <label class="t2" for="email">Correo Electronico:</label><br>
                 <input type="text" id="email" name="email" required><br>
                 
                 <label class="t2" for="password">Contraseña:</label><br>
@@ -23,7 +40,7 @@
                 <button type="submit" id="enviar">Confirmar</button>
             </form>
             <p class="p1">¿No tienes cuenta?
-                <a id="prueba">Registrate</a>
+                <a href="registro.html">Registrate</a>
             </p>
             </div>
         </div>
@@ -36,19 +53,23 @@ const prueba = document.getElementById("prueba");
 prueba.addEventListener('click', testeo);
 
 function testeo(event){
-    console.log("Testeo?")
+    
     event.preventDefault();
-    fetch("http://127.0.0.1:5000/ver_sesion").then(response => 
-                
-                    
-                    response.json()
-)
+    fetch('http://127.0.0.1:5000/ver_sesion', {
+                method: 'GET',
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+                , credentials: 'include'
+            })
+            .then(response => response.json())
                 .then(data => {
-                        console.log(data)
-                        
-                        
+                    
                 })
-                .catch(error => console.log(error))
+            .catch(error => {
+                console.error('Error:', error);
+        });
+    return null;
 }
 function login(event){
         event.preventDefault();
@@ -57,7 +78,7 @@ function login(event){
         
         pass = referenciapassword.value;
         email= referenciaemail.value
-        console.log(pass, email)
+        
 
         data={
             "email": email,
@@ -73,10 +94,21 @@ function login(event){
             })
             .then(response => response.json())
                 .then(data => {
-                    console.log('Respuesta del servidor:', data);
-                })
+                    if(data.error){
+
+                        showfailure()
+                    }
+                    else{
+                        
+                        showsuccess()
+                        setTimeout(function() {
+                            window.location.href = '/HTML/UI_principal.html';
+                        }, 1000);
+                    }
+                    })
             .catch(error => {
                 console.error('Error:', error);
+                showfailure()
         });
     
 }
@@ -87,6 +119,25 @@ if (miBoton.onclick !== null) {
 
 if (miBoton.onclick !== null) {
     miBoton.removeEventListener('click', login);
+}
+function showsuccess() {
+    const notification = document.getElementById("success-notification");
+    notification.style.display = "block";
+}
+
+function closesuccess() {
+    const notification = document.getElementById("success-notification");
+    notification.style.display = "none";
+}
+
+function showfailure() {
+    const notification = document.getElementById("failure-notification");
+    notification.style.display = "block";
+}
+
+function closefailure() {
+    const notification = document.getElementById("failure-notification");
+    notification.style.display = "none";
 }
 
 </script>
